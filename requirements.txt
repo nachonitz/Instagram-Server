@@ -1,0 +1,13 @@
+Flask==1.0.2
+uWSGI==2.0.17.1
+flask-sqlalchemy==2.3.0
+psycopg2
+flask-restful
+flask-migrate
+flask-testing
+coveralls
+pylint
+flake8
+python-dotenv
+firebase_admin
+gunicorn
