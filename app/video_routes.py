@@ -1,11 +1,12 @@
 from flask import request, jsonify
 from flask_restful import Resource
-
+import app.Instagram.main
 
 class VideoRoute(Resource):
     @staticmethod
-    def get(id_video=None):
-        response = jsonify({"id": "hola"})
+    def get(persona=None):
+        lista = app.Instagram.main.get_unfollowers(persona)
+        response = jsonify(lista)
         response.status_code = 200
         return response
     @staticmethod
@@ -14,12 +15,12 @@ class VideoRoute(Resource):
         response.status_code = 200
         return response
     @staticmethod
-    def put(id_video=None):
+    def put(persona=None):
         response = jsonify({"id": "hola"})
         response.status_code = 200
         return response
     @staticmethod
-    def delete(id_video=None):
+    def delete(persona=None):
         response = jsonify({"id": "hola"})
         response.status_code = 200
         return response
