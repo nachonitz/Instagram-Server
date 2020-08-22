@@ -4,7 +4,7 @@ import urllib3
 urllib3.disable_warnings()
 
 def get_profile(user):
-    logger = "nachonitz"
+    logger = "nacho.n.n"
     api = fa.login(logger)
     usuario1 = app.Instagram.usuario.Usuario(api,user)
     unfollowers = usuario1.get_unfollowers()
