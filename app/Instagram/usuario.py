@@ -53,7 +53,7 @@ class Usuario:
 
 		medias = []
 		for id_media in ids:
-			medias.append(media.Media(self.api,id_media))
+			medias.append(app.Instagram.media.Media(self.api,id_media))
 
 		self.medias = medias
 

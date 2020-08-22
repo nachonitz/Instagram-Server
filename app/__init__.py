@@ -24,7 +24,7 @@ def create_app():
 def add_routes(app_api):
     from .video_routes import VideoRoute
 
-    app_api.add_resource(VideoRoute, '/unfollowers', '/unfollowers/<string:persona>')
+    app_api.add_resource(VideoRoute, '/profile', '/profile/<string:persona>')
 
 app = create_app()
 api = Api(app)

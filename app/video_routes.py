@@ -5,8 +5,8 @@ import app.Instagram.main
 class VideoRoute(Resource):
     @staticmethod
     def get(persona=None):
-        lista = app.Instagram.main.get_unfollowers(persona)
-        response = jsonify(lista)
+        profile = app.Instagram.main.get_profile(persona)
+        response = jsonify(profile)
         response.status_code = 200
         return response
     @staticmethod
