@@ -11,9 +11,12 @@ def get_profile(user):
     fans = usuario1.get_fans()
     seguidores = usuario1.get_seguidores()
     seguidos = usuario1.get_seguidos()
-    id_medias = usuario1.get_id_posts()
+    #id_medias = usuario1.get_id_posts()
+    user_info = usuario1.get_user_info()
     return {"unfollowers": unfollowers,
             "fans": fans,
             "followers": seguidores,
             "followings": seguidos,
-            "medias": id_medias}
+            #"medias": id_medias,
+            "user_info": user_info
+            }

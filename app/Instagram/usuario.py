@@ -101,3 +101,17 @@ class Usuario:
 			if not seguidores[i] in seguidos:
 				fans.append(seguidores[i])
 		return fans
+
+	def get_user_info(self):
+		self.api.searchUsername(self.nombre)
+		all_info = self.api.LastJson['user']
+		info = {
+			"username": all_info["username"],
+			'full_name': all_info['full_name'],
+			'biography': all_info['biography'],
+			'profile_pic_url': all_info['profile_pic_url'],
+			'media_count': all_info['media_count'],
+			'is_private': all_info['is_private'],
+			'pk': all_info['pk']
+		}
+		return info
