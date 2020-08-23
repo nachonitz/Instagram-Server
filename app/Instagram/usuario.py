@@ -60,12 +60,23 @@ class Usuario:
 		self.id_posts = ids
 		return ids
 
+	def get_user_important_data(self, usuario):
+		return {
+				'pk': usuario['pk'],
+				'username': usuario['username'],
+				'full_name': usuario['full_name'],
+				'profile_pic_url': usuario['profile_pic_url'],
+				'is_private': usuario['is_private'],
+				'is_verified': usuario['is_verified']
+				}
+
 	def get_seguidores(self):
 		if self.seguidores == None:
 			seguidores = []
 			tabla_followers = self.api.getTotalFollowers(self.get_id()) #Esto devuelve una lista de diccionarios con datos de los followers
 			for usuario in tabla_followers: #recorro cada diccionario y me quedo solo con el username
-				seguidores.append(usuario["username"])
+				data = self.get_user_important_data(usuario)
+				seguidores.append(data)
 			self.seguidores = seguidores
 
 		return self.seguidores
@@ -75,7 +86,8 @@ class Usuario:
 			seguidos = []
 			tabla_followings = self.api.getTotalFollowings(self.get_id()) #Esto devuelve una lista de diccionarios con datos de los followers
 			for usuario in tabla_followings: #recorro cada diccionario y me quedo solo con el username
-				seguidos.append(usuario["username"])
+				data = self.get_user_important_data(usuario)
+				seguidos.append(data)
 			self.seguidos = seguidos
 
 		return self.seguidos
