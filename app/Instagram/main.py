@@ -1,12 +1,14 @@
 import app.Instagram.usuario
 import app.Instagram.funciones_auxiliares as fa
 import urllib3
+import app.Instagram.InstagramAPI as InstagramAPI
 urllib3.disable_warnings()
 
-def get_profile(user):
-    logger = "nacho.n.n"
-    api = fa.login(logger)
-    usuario1 = app.Instagram.usuario.Usuario(api,user)
+
+def get_profile(username, username_id, token, rank_token, uuid, sessionid):
+    api = InstagramAPI.InstagramAPI("asd", "asd")
+    api.sync_api(username_id, token, rank_token, uuid, sessionid)
+    usuario1 = app.Instagram.usuario.Usuario(api, username)
     unfollowers = usuario1.get_unfollowers()
     fans = usuario1.get_fans()
     seguidores = usuario1.get_seguidores()
@@ -20,3 +22,9 @@ def get_profile(user):
             #"medias": id_medias,
             "user_info": user_info
             }
+
+
+def login(username, password):
+    api = InstagramAPI.InstagramAPI(username, password)
+    api.login()
+    return api.get_portable_data()

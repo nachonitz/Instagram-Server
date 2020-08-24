@@ -113,6 +113,25 @@ class InstagramAPI:
                     print("Login success!\n")
                     return True
 
+    def get_portable_data(self):
+        return {'username_id': self.username_id,
+                'token': self.token,
+                'rank_token': self.rank_token,
+                'sessionid': self.s.cookies.get_dict()['sessionid'],
+                'username': self.username,
+                'uuid': self.uuid}
+
+    def sync_api(self, username_id, csrftoken, rank_token, uuid, sessionid):
+        self.isLoggedIn = True
+        self.username_id = username_id
+        self.rank_token = rank_token
+        self.token = csrftoken
+        self.uuid = uuid
+
+        cookie_obj = requests.cookies.create_cookie(domain='instagram.com', name='sessionid',
+                                                    value= sessionid)
+        self.s.cookies.set_cookie(cookie_obj)
+
     def syncFeatures(self):
         data = json.dumps({'_uuid': self.uuid,
                            '_uid': self.username_id,
